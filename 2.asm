@@ -1,0 +1,26 @@
+DATAS SEGMENT
+DATAS ENDS
+
+CODES SEGMENT
+    MAIN PROC FAR
+        ASSUME CS:CODES, DS:DATAS
+        MOV AX, DATAS
+        MOV DS, AX
+        
+        CALL READCHAR
+        MOV DL, AL
+        MOV AH, 02H
+        INT 21H
+        
+        MOV AH, 4CH
+        INT 21H
+    MAIN ENDP
+    
+    READCHAR PROC NEAR
+        MOV AH, 01H
+        INT 21H
+        RET
+    READCHAR ENDP
+CODES ENDS
+
+END MAIN
